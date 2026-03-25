@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sinhala Jobs - Sri Lanka's Premier Job Portal</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        navy: {
+                            DEFAULT: '#1A237E',
+                            dark: '#0D1B3E',
+                            light: '#283593'
+                        },
+                        vibrant: {
+                            DEFAULT: '#FF9800',
+                            dark: '#F57C00',
+                            light: '#FFB74D'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'Roboto', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        [lucide] {
+            width: 20px;
+            height: 20px;
+            stroke-width: 2px;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-900 font-sans min-h-screen flex flex-col">
+    <!-- Navigation Bar -->
+    <nav id="navbar" class="bg-navy text-white shadow-lg sticky top-0 z-50"></nav>
+
+    <!-- Main Content Area -->
+    <main id="app" class="flex-grow"></main>
+
+    <!-- Footer -->
+    <footer id="footer" class="bg-navy-dark text-white pt-10 pb-6 mt-10"></footer>
+
+    <!-- Overlay Loader -->
+    <div id="loader" class="fixed inset-0 bg-white bg-opacity-80 flex items-center justify-center z-[100] hidden">
+        <div class="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-navy"></div>
+    </div>
+
+    <!-- Firebase App initialization script -->
+    <script type="module" src="./src/core/app.js"></script>
+</body>
+</html>
