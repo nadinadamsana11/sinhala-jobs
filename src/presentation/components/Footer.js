@@ -58,6 +58,12 @@ export const Footer = () => {
                         </div>
                         <span class="group-hover:text-white transition-colors">+94 11 234 5678</span>
                     </li>
+                    <li class="flex items-start space-x-4 group cursor-default pt-4 border-t border-white/5">
+                        <div class="w-10 h-10 bg-white/5 rounded-xl flex items-center justify-center shrink-0">
+                            <i data-lucide="map-pin" class="w-5 h-5 text-vibrant"></i>
+                        </div>
+                        <span class="text-gray-400 mt-2 font-black">Horana, Sri Lanka</span>
+                    </li>
                 </ul>
             </div>
         </div>

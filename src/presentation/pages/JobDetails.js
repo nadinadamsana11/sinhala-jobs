@@ -60,11 +60,16 @@ export const init = async () => {
                     </div>
                     <div class="flex-grow">
                         <h1 class="text-3xl font-black text-navy mb-2">${job.title}</h1>
-                        <div class="flex flex-wrap items-center gap-x-6 gap-y-2 text-gray-500 font-bold">
+                        <div class="flex flex-wrap items-center gap-x-6 gap-y-2 text-gray-500 font-bold mb-4">
                             <span class="flex items-center"><i data-lucide="building" class="w-4 h-4 mr-2 text-vibrant"></i>${job.companyName}</span>
                             <span class="flex items-center"><i data-lucide="map-pin" class="w-4 h-4 mr-2 text-vibrant"></i>${job.location}</span>
                             <span class="flex items-center"><i data-lucide="calendar" class="w-4 h-4 mr-2 text-vibrant"></i>Posted ${formatDate(job.postedAt)}</span>
                         </div>
+                        ${job.labels && job.labels.length > 0 ? `
+                        <div class="flex flex-wrap gap-2">
+                            ${job.labels.map(l => `<span class="bg-gray-100 text-gray-600 px-3 py-1 rounded-lg text-xs font-bold">${l}</span>`).join('')}
+                        </div>
+                        ` : ''}
                     </div>
                 </div>
 
@@ -89,6 +94,11 @@ export const init = async () => {
                             <span class="text-gray-400 font-medium">Job Type:</span>
                             <span class="font-bold text-navy">${job.type}</span>
                         </div>
+                        ${job.category ? `
+                        <div class="flex justify-between items-center pb-4 border-b border-gray-100">
+                            <span class="text-gray-400 font-medium">Category:</span>
+                            <span class="font-bold text-navy text-right">${job.category}${job.subcategory ? `<br><span class="text-xs text-gray-400">${job.subcategory}</span>` : ''}</span>
+                        </div>` : ''}
                         <div class="flex justify-between items-center pb-4 border-b border-gray-100">
                             <span class="text-gray-400 font-medium">Salary Range:</span>
                             <span class="font-bold text-green-600">${job.salaryRange || 'Negotiable'}</span>
@@ -138,7 +148,7 @@ const initApplyButton = (job) => {
         const { collection, addDoc, doc, updateDoc, increment } = await import('https://www.gstatic.com/firebasejs/12.11.0/firebase-firestore.js');
 
         if (!auth.currentUser) {
-            alert('Please login to apply for this job.');
+            if (window.showToast) window.showToast('Please login to apply for this job.', 'error');
             window.location.hash = '#/login';
             return;
         }
@@ -168,10 +178,10 @@ const initApplyButton = (job) => {
             btn.classList.replace('bg-vibrant', 'bg-green-500');
             btn.disabled = true;
             
-            alert('Your application has been sent successfully!');
+            if (window.showToast) window.showToast('Your application has been sent successfully!', 'success');
         } catch (error) {
             console.error('Apply error:', error);
-            alert('Failed to submit application. Please try again.');
+            if (window.showToast) window.showToast('Failed to submit application. Please try again.', 'error');
         } finally {
             loader?.classList.add('hidden');
         }

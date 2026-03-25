@@ -124,10 +124,10 @@ export const init = async () => {
                 website: form.website.value,
                 updatedAt: new Date().toISOString()
             });
-            alert('Profile updated successfully!');
+            if (window.showToast) window.showToast('Profile updated successfully!');
         } catch (error) {
             console.error('Update profile error:', error);
-            alert('Failed to update profile.');
+            if (window.showToast) window.showToast('Failed to update profile.', 'error');
         } finally {
             loader?.classList.add('hidden');
         }
