@@ -6,8 +6,8 @@ import { FirestoreSource } from '../sources/FirestoreSource.js';
 import { Job } from '../../domain/entities/Job.js';
 
 export const JobRepository = {
-    async getAllJobs(filters) {
-        const jobsData = await FirestoreSource.queryJobs(filters);
+    async getAllJobs(filters, limitCount = 20) {
+        const jobsData = await FirestoreSource.queryJobs(filters, limitCount);
         return jobsData.map(data => new Job(data));
     },
 

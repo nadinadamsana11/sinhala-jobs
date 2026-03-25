@@ -14,7 +14,9 @@ export const render = async () => {
         <p class="text-gray-500 text-lg max-w-md mb-10 leading-relaxed">
             The page you are looking for might have been removed, had its name changed, or is temporarily unavailable.
         </p>
-        <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+        <p class="text-[10px] font-black text-navy/20 uppercase tracking-[0.3em] animate-pulse">Redirecting to home in 5 seconds...</p>
+        
+        <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 pt-4">
             <a href="#/" class="bg-navy hover:bg-navy-dark text-white px-10 py-4 rounded-2xl font-black text-lg shadow-xl mb-4 sm:mb-0 transition-all transform hover:-translate-y-1">Go Home</a>
             <a href="#/jobs" class="bg-vibrant hover:bg-vibrant-dark text-white px-10 py-4 rounded-2xl font-black text-lg shadow-xl transition-all transform hover:-translate-y-1">Find Jobs</a>
         </div>

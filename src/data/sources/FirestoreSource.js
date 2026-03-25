@@ -44,7 +44,7 @@ export const FirestoreSource = {
     },
 
     // Query Jobs
-    async queryJobs(filters = {}) {
+    async queryJobs(filters = {}, limitCount = 20) {
         let q = collection(db, 'jobs');
         const constraints = [orderBy('postedAt', 'desc')];
 
@@ -58,7 +58,7 @@ export const FirestoreSource = {
             constraints.push(where('type', '==', filters.type));
         }
 
-        const finalQuery = query(q, ...constraints, limit(20));
+        const finalQuery = query(q, ...constraints, limit(limitCount));
         const querySnapshot = await getDocs(finalQuery);
         return querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
     },

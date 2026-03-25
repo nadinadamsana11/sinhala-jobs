@@ -8,6 +8,7 @@ import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/12.11.0/f
 import { router } from './router.js';
 import { Navbar } from '../presentation/components/Navbar.js';
 import { Footer } from '../presentation/components/Footer.js';
+import { Toast } from '../presentation/scripts/Toast.js';
 
 // Global state
 window.currentUser = null;
